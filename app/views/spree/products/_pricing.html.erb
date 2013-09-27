@@ -1,3 +1,7 @@
+<%
+  if SpreeFlexiVariants::Config[:use_javascript_pricing_updates]
+%>
+
 <%= content_for :head do %>
   <%# didn't use javascript_tag here so we don't confuse deface %>
   <script type="text/javascript">
@@ -23,7 +27,7 @@
     // keep track of ad_hoc adjustments
     var price_modifier_map={};
 
-    <%  @product.ad_hoc_option_types.each do |pot| %>
+    <% @product.ad_hoc_option_types.each do |pot| %>
       <% pot.option_values.each do |pov| %>
         price_modifier_map[<%= pov.id %>]= <%= pov.price_modifier %>;
       <% end %>
@@ -38,7 +42,7 @@
       };
     })();
 
-    $(document).ready(function() {
+    $(function() {
 
       // watch for variant changes
       $("#product-variants input[type='radio']").change(function() {
@@ -58,11 +62,11 @@
   ); // ready
 
   // stolen from http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric
-  $(document).ready(function(isNumeric(input)) {
+  function isNumeric(input) {
     return (input - 0) == input && input.length > 0;
   }
 
-  $(document).ready(function(compute_variant_price_diff(base_price))  {
+  function compute_variant_price_diff(base_price) {
     var variant_price=0;
 
     $("#product-variants input[type='radio']:checked").each (function() {
@@ -72,12 +76,12 @@
     <% if @product.has_variants? %>
       return variant_price-base_price;
     <% else %>
-      return variant_price;  // don't return a negative number if we don't have any variants
+      return variant_price; // don't return a negative number if we don't have any variants
     <% end %>
 
   }
 
-  $(document).ready(function(compute_configuration_price()) {
+  function compute_configuration_price() {
     var configuration_price=0;
 
     // for selects or checkboxes
@@ -102,7 +106,7 @@
     return configuration_price;
   }
 
-  $(document).ready(function(compute_customization_price()) {
+  function compute_customization_price() {
     var price=0;
 
     // for selects or checkboxes
@@ -110,7 +114,7 @@
       var val=$(this).val();
 
       if (isNumeric(val)) {
-        price  +=  parseFloat(val);
+        price += parseFloat(val);
       }
     });
 
@@ -118,11 +122,11 @@
   }
 
 
-  $(document).ready(function(updatePrice()) {
+  function updatePrice() {
 
-    var cur_variant_price_diff       = compute_variant_price_diff(base_price);
-    var cur_configuration_price =  compute_configuration_price();
-    var cur_customization_price =  compute_customization_price();
+    var cur_variant_price_diff = compute_variant_price_diff(base_price);
+    var cur_configuration_price = compute_configuration_price();
+    var cur_customization_price = compute_customization_price();
     var cur_price =base_price + cur_variant_price_diff + cur_configuration_price + cur_customization_price;
 
     $('.price.selling').text(cur_price.toFixed(2)).formatCurrency({region: "<%= I18n.locale.to_s %>"});
@@ -131,4 +135,5 @@
   //]]>
   </script>
 <% end %>
-
+<% # end if SpreeFlexiVariants::Config[:use_javascript_pricing_updates] %>
+<% end %>
