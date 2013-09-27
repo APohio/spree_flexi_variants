@@ -38,7 +38,7 @@
       };
     })();
 
-    $(function() {
+    $(document).ready(function() {
 
       // watch for variant changes
       $("#product-variants input[type='radio']").change(function() {
@@ -58,11 +58,11 @@
   ); // ready
 
   // stolen from http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric
-  function isNumeric(input) {
+  $(document).ready(function(isNumeric(input)) {
     return (input - 0) == input && input.length > 0;
   }
 
-  function compute_variant_price_diff(base_price) {
+  $(document).ready(function(compute_variant_price_diff(base_price))  {
     var variant_price=0;
 
     $("#product-variants input[type='radio']:checked").each (function() {
@@ -77,7 +77,7 @@
 
   }
 
-  function compute_configuration_price() {
+  $(document).ready(function(compute_configuration_price()) {
     var configuration_price=0;
 
     // for selects or checkboxes
@@ -102,7 +102,7 @@
     return configuration_price;
   }
 
-  function compute_customization_price() {
+  $(document).ready(function(compute_customization_price()) {
     var price=0;
 
     // for selects or checkboxes
@@ -118,7 +118,7 @@
   }
 
 
-  function updatePrice() {
+  $(document).ready(function(updatePrice()) {
 
     var cur_variant_price_diff       = compute_variant_price_diff(base_price);
     var cur_configuration_price =  compute_configuration_price();
@@ -131,3 +131,4 @@
   //]]>
   </script>
 <% end %>
+
