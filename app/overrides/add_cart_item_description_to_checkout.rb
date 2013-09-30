@@ -1,33 +1,4 @@
 Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      :name => 'add_cart_item_description_20130000001',
                      :insert_after => 'code[erb-loud]:contains("item.variant.name")',
-                     :text => '<% unless item.ad_hoc_option_values.blank? %>
-  <% #TODO: group multi-select options (e.g. toppings) %>
-
-  <% item.ad_hoc_option_values.each do |pov| %>
-    <%= pov.option_value.option_type.presentation %> = <%= pov.option_value.presentation %><%= "," unless pov == item.ad_hoc_option_values.last %>
-  <% end %>
-<% end # unless empty? %>
-
-<% unless item.product_customizations.blank? %>
-    <% item.product_customizations.each do |customization| %>
-    <%= customization.product_customization_type.presentation %> <%= "(#{Spree::Money.new(customization.price).to_s})" if customization.price > 0%>
-      <% customization.customized_product_options.each do |option| %>
-         <% next if option.blank? %>
-
-   <% partial = option.customizable_product_option.name %>
-         <% lookup=ActionView::LookupContext.new(ActionController::Base.view_paths, {:formats => [:html]}) %>
-         <% if lookup.exists?("spree/products/#{partial}",nil,true) %>
-            <%= render :partial => "spree/orders/custom_fields/#{partial}", :locals=>{:option => option} %>
-         <% else %>
-              <% if option.customization_image? %>
-                <%= option.customizable_product_option.presentation %> = <%= File.basename option.customization_image.url %>
-              <% else %>
-                <%= option.customizable_product_option.presentation %> = <%= option.value %>
-              <% end %>
-         <% end %>
-      <% end # each option %>
-   <% end # each customization %>
-<% end # unless empty? %>
-
-')
+                     :text => '<%= item.ad_hoc_option_values %>')
