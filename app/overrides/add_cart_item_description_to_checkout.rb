@@ -1,7 +1,7 @@
 Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      :name => 'add_cart_item_description_20130000001',
                      :insert_after => 'code[erb-loud]:contains("item.variant.name")',
-                     :text => '<% unless item.ad_hoc_option_values.empty? %>
+                     :text => '<% unless item.ad_hoc_option_values.blank? %>
   <% #TODO: group multi-select options (e.g. toppings) %>
 
   <% item.ad_hoc_option_values.each do |pov| %>
@@ -9,11 +9,11 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
   <% end %>
 <% end # unless empty? %>
 
-<% unless item.product_customizations.empty? %>
+<% unless item.product_customizations.blank? %>
     <% item.product_customizations.each do |customization| %>
     <%= customization.product_customization_type.presentation %> <%= "(#{Spree::Money.new(customization.price).to_s})" if customization.price > 0%>
       <% customization.customized_product_options.each do |option| %>
-         <% next if option.empty? %>
+         <% next if option.blank? %>
 
    <% partial = option.customizable_product_option.name %>
          <% lookup=ActionView::LookupContext.new(ActionController::Base.view_paths, {:formats => [:html]}) %>
