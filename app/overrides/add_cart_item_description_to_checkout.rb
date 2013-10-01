@@ -5,5 +5,5 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      <% line_item = Spree::Order.find_by_id("12") %>
                      <p><%= line_item.display_total %></p
                      
-                     <p><%= Spree::Order(item) %></p>
+                     <p></p>
                      <p>This is a test message</p>')
