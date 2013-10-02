@@ -8,8 +8,11 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
 
 Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      :name => 'add_cart_item_description_20130000002',
-                     :replace => 'code[erb-loud]:contains("item.variant.name")',
+                     :insert_after => 'code[erb-loud]:contains("item.variant.name")',
                      :text => '<% order_details = Spree::Order.find_by_id(current_order.id) %>
                      <% order_details.line_items.each do |lineitem| %>
-                     <%= lineitem.ad_hoc_option_values %>
+                        <% lineitem.ad_hoc_option_values.each do |options| %>
+                           <dt><%= options.option_value.option_type.presentation %></dt>
+                           <dd><%= options.option_value.presentation %></dd>
+                        <% end %>                    
                      <% end %>')
