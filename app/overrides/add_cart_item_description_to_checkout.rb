@@ -16,7 +16,7 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= @itemname %><dt><%= options.option_value.option_type.presentation %></dt><dd><%= options.option_value.presentation %></dd></td>
                   <td class="item-qty"><%= options.quantity %></td>
-                  <td class="item-price"><%= @itemprice %></td>
+                  <td class="item-price"><%= lineitem.price %></td>
                 </tr>
              <% end %>
         <% end %>
