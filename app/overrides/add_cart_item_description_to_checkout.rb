@@ -13,7 +13,7 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
  		
  			 <% lineitem.ad_hoc_option_values.each do |options| %>
                 <tr class="stock-item">
-                  <td class="item-image"><%= mini_image(@itemimage) %></td>
+                  <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= @itemname %><dt><%= options.option_value.option_type.presentation %></dt><dd><%= options.option_value.presentation %></dd></td>
                   <td class="item-qty"><%= options.quantity %></td>
                   <td class="item-price"><%= @itemprice %></td>
