@@ -9,7 +9,7 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
  		<% order_details.line_items.each do |lineitem| %>
  			<tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
-                  <td class="item-name"><%= @itemname %>
+                  <td class="item-name"><%= item.variant.name %>
  			 <% lineitem.ad_hoc_option_values.each do |options| %>
  			 
                 <dt><%= options.option_value.option_type.presentation %></dt><dd><%= options.option_value.presentation %></dd>
