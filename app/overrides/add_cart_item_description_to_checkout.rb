@@ -1,7 +1,8 @@
 Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      :name => 'add_cart_item_description_20130000001',
-                     :replace => 'code[erb-silent]:contains("ship_form.object.manifest.each")',
-                     :text => '<% ship_form.object.manifest.each do |item| %>
+                     :replace => '[data-hook="stock-contents"] tbody',
+                     :text => '<tbody>
+ <% ship_form.object.manifest.each do |item| %>
  		<% itemimage = mini_image(item.variant) %>
  		<% itemname = item.variant.name %>
  		<% order_details = Spree::Order.find_by_id(current_order.id) %>
@@ -19,4 +20,5 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                 </tr>
              <% end %>
         <% end %>
- <% end %>')
+ <% end %>
+</tbody>')
