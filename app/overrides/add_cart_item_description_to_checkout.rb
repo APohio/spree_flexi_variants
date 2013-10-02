@@ -1,5 +1,5 @@
 Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
-                     :name => 'add_cart_item_description_20130000001',
+                     :name => 'add_cart_item_description_20130000002',
                      :replace => '[data-hook="stock-contents"] tbody',
                      :text => '<tbody>
  <% ship_form.object.manifest.each do |item| %>
@@ -15,7 +15,7 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= @itemname %><dt><%= options.option_value.option_type.presentation %></dt><dd><%= options.option_value.presentation %></dd></td>
-                  <td class="item-qty"><%= options.quantity %></td>
+                  <td class="item-qty"><%= options %></td>
                   <td class="item-price"><%= lineitem.price %></td>
                 </tr>
              <% end %>
