@@ -3,5 +3,5 @@ Deface::Override.new(:virtual_path => 'spree/checkout/_delivery',
                      :insert_after => 'code[erb-loud]:contains("item.variant.name")',
                      :text => '<%= item %>
                      <% order_details = Spree::Order.find_by_id(current_order.id) %>
-                     <P><%= order_details.line_item %></p>
+                     <P><%= order_details.line_items %></p>
                      <p>This is a test message</p>')
