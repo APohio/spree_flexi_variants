@@ -1,9 +1,6 @@
 ---
 en:
-  spree:
-    customizations: ""
     add: "Add"
-    select_variant_options: ""
   
     required: "Required?"
     price_modifier: "Price Adjustment"
@@ -46,8 +43,8 @@ en:
     max_amount: 'Max. Amount'
     min_pricing_area: 'Min. Area to Price (possbily has smaller area, but will be priced as if this area)'
     not_all_combinations_available: '*Note that not all option combinations are available'
-    select_variant_options: 'Options'
-    customizations: 'Customizations'
+    select_variant_options: ''
+    customizations: ''
     customize: 'Customize'
     reset: 'Reset'
     position_within_product: 'Display order relative to other Ad Hoc Options (low numbers are displayed first)'
