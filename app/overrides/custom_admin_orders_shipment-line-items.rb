@@ -1,5 +1,5 @@
 Deface::Override.new(:virtual_path => 'spree/admin/orders/_shipment',
-                     :name => 'add_admin_orders_shipment-line-items',
+                     :name => 'custom_admin_orders_shipment-line-items',
                      :replace => 'tr.show-method.total',
                      :text => ' 
                                        
