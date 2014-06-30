@@ -1,5 +1,6 @@
 /*
  *= require admin/spree_core
+ *= require_self
 */
 
 #order-form-wrapper .stock-item {
